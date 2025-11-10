@@ -58,7 +58,7 @@ docker run -d \
 ```
 
 Available variables:
-- `POSTGRES_PASSWORD` - Database password (default: CwtP0stgres1)
+- `POSTGRES_PASSWORD` - Database password (default: auto-generated random 25-character password)
 - `POSTGRES_USER` - Database user (default: postgres)
 - `POSTGRES_DB` - Database name (default: code-we-trust)
 
@@ -187,6 +187,6 @@ All services run inside a single container with proper initialization and health
 ## Security Notes
 
 - The container runs with `--privileged` flag, which is required for Docker-in-Docker
-- Default PostgreSQL password is embedded in the image (change before deployment)
+- PostgreSQL password is auto-generated at startup unless explicitly provided via environment variable
 - By default, all registered users have admin access (configure authorization for production)
 - Analysis runs in isolated Docker containers within the main container

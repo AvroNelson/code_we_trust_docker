@@ -15,8 +15,7 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure PostgreSQL
-ENV POSTGRES_PASSWORD=CwtP0stgres1 \
-    POSTGRES_USER=postgres \
+ENV POSTGRES_USER=postgres \
     POSTGRES_DB=code-we-trust \
     PGDATA=/var/lib/postgresql/data
 

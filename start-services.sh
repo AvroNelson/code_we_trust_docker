@@ -3,6 +3,12 @@ set -e
 
 echo "[$(date)] Starting services..."
 
+# Generate random password if not provided
+if [ -z "${POSTGRES_PASSWORD}" ]; then
+    export POSTGRES_PASSWORD=$(openssl rand -base64 32 | tr -d "=+/" | cut -c1-25)
+    echo "[$(date)] Generated random PostgreSQL password"
+fi
+
 # Find PostgreSQL version
 PG_VERSION=$(ls /usr/lib/postgresql/ | head -n1)
 PG_BIN="/usr/lib/postgresql/${PG_VERSION}/bin"
